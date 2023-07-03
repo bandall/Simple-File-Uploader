@@ -119,7 +119,7 @@ public class UploadController {
         }
 
         FileMetadata fileMetadata = fileMetadataOptional.get();
-        if(fileMetadata.getOwnerId().longValue() != userId.longValue() && !memberDetails.getAuthorities().toString().equals("[ADMIN]")) {
+        if(fileMetadata.getOwnerId().longValue() != userId.longValue() && !memberDetails.getAuthorities().toString().equals("[ROLE_ADMIN]")) {
             log.info("userId={}, fileOwnerId={}", userId, fileMetadata.getOwnerId());
             model.addAttribute("errMsg", "ERROR : 파일 삭제 권한이 없습니다.");
             return "error/errorMessage";

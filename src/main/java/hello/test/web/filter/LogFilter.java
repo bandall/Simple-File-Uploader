@@ -30,6 +30,7 @@ public class LogFilter implements Filter {
         }
 
         MDC.put(TRACE_ID, uuid);
+        long startTime = System.currentTimeMillis();
         if(session.getAttribute("login") != null) {
             Object userId = session.getAttribute("id");
             if(userId == null) {
@@ -43,6 +44,8 @@ public class LogFilter implements Filter {
         }
 
         chain.doFilter(request, response);
+        long totalTime = System.currentTimeMillis() - startTime;
+        log.info("Response Time = {}ms", totalTime);
         MDC.clear();
     }
 }
