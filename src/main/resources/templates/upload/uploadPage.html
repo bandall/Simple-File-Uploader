@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 560px;
+        }
+        .submit_btn {
+            float: right;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container" style="max-width: 600px">
+    <div class="py-5 text-center">
+        <h2>음악 업로드</h2>
+    </div>
+    <form th:action method="post" enctype="multipart/form-data" id="form">
+        <label for="formFile" class="form-label">업로드할 음악 파일을 선택해 주세요.</label>
+        <input class="form-control" type="file" name="file" id="formFile"/>
+        <div class="progress" style="margin-top: 2%">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress"></div>
+        </div>
+        <input type="submit" class="btn btn-dark submit_btn" value="업로드" id="submit_btn" disabled="true">
+    </form>
+
+    <p></p>
+    <div class="col">
+        <button class="w-100 btn btn-secondary btn-lg"
+                th:onclick="|location.href='@{/file-list}'|" type="button">
+            파일 목록
+        </button>
+    </div>
+    <p></p>
+    <div class="col">
+        <button class="w-100 btn btn-secondary btn-lg"
+                th:onclick="|location.href='@{/}'|" type="button">
+            홈 화면
+        </button>
+    </div>
+</div> <!-- /container -->
+</body>
+</html>
+<script th:src="@{/script/jquery.js}"></script>
+<script>
+    let fileSelectForm = document.getElementById("formFile");
+    let button = document.getElementById("submit_btn");
+    let progressBar = document.getElementById("progress");
+    let file = null;
+    let maxFileSize = 300;
+    let uploadPerSec = 5;
+
+    function sleep(ms) {
+        return new Promise((r) => setTimeout(r, ms));
+    }
+
+    // button.onclick = async function () {
+    //     button.disabled = true;
+    //     button.value = "업로드 중...";
+    //     let fileSizeMB = Math.floor(file.size / 1024 / 1024);
+    //     let percent = 0;
+    //     progressBar.style.width = "100%"
+    //     button.form.submit();
+    //     for(let i = 0; i <= (fileSizeMB / uploadPerSec) * 10 || percent < 100; i++) {
+    //         percent += Math.floor(uploadPerSec/fileSizeMB * 100) / 10;
+    //         progressBar.style.width = String(percent) + "%";
+    //         await sleep(100);
+    //     }
+    // }
+
+    button.onclick = function (e) {
+        button.disabled = true;
+        button.value = "업로드 중...";
+        e.preventDefault()
+        let formData = new FormData($('#form')[0]);
+        $.ajax({
+            url : "/upload",
+            type: 'post',
+            data: formData,
+            dataType: "json",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if(data.status == "SUCCESS") {
+                    location.href = "/upload/success/" + data.fileId;
+                } else {
+                    alert("업로드 중 오류가 발생하였습니다.");
+                    location.reload();
+                }
+            },
+            error: function (data) {
+                alert("업로드 중 오류 발생!");
+                location.reload();
+            },
+            xhr: function () {
+                let xhr = new window.XMLHttpRequest();
+
+                xhr.upload.addEventListener('progress', function (evt) {
+                    if(evt.lengthComputable) {
+                        let percentComplete = evt.loaded / evt.total * 100;
+                        // console.log(percentComplete)
+                        progressBar.style.width = String(percentComplete) + "%";
+                    }
+
+                }, false);
+                return xhr;
+            }
+        })
+    }
+
+    fileSelectForm.onchange = function () {
+        file = this.files[0];
+        if(!file) {
+            return;
+        }
+        let fileSizeMB = Math.floor(file.size / 1024 / 1024);
+        if(fileSizeMB > maxFileSize) {
+            alert("업로드 가능 최대 크기는 " + maxFileSize + "MB 입니다.");
+            button.disabled = true;
+            this.value = "";
+            return;
+        }
+
+        button.disabled = false;
+    }
+
+</script>

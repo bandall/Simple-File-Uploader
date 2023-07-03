@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container" style="max-width: 600px">
+    <div class="py-5 text-center">
+        <h2>로그인 성공</h2>
+        <h4 class="mb-3" th:text="|유저 : ${username}|">로그인 사용자 이름</h4>
+    </div>
+        <p>
+        <div class="col">
+            <button class="w-100 btn btn-secondary btn-lg"
+                    th:onclick="|location.href='@{/file-list}'|" type="button">
+                파일 목록
+            </button>
+        </div>
+        <p> </p>
+        <div class="col">
+            <button class="w-100 btn btn-secondary btn-lg"
+                    th:onclick="|location.href='@{/upload}'|" type="button">
+                파일 업로드
+            </button>
+        </div>
+        <p></p>
+            <div th:if="${isAdmin}" class="col">
+                <button class="w-100 btn btn-secondary btn-lg"
+                        th:onclick="|location.href='@{/admin}'|" type="button">
+                    관리 페이지
+                </button>
+            </div>
+        <p></p>
+        <div>
+            <form th:action="@{/logout}" method="post">
+                <button class="w-100 btn btn-dark btn-lg" type="submit">
+                    로그아웃
+                </button>
+            </form>
+        </div>
+    </div>
+    <hr class="my-4">
+</div> <!-- /container -->
+</body>
+</html>
