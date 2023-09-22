@@ -9,8 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.nio.file.NoSuchFileException;
 import java.util.Optional;
 
 @Slf4j
@@ -21,7 +19,7 @@ public class ApiController {
     private final FileMetaRepository fileMetaRepository;
 
     @GetMapping("/api/file-info/{fileId}")
-    public FileInfoDto getFileInfo(@PathVariable String fileId) throws NoSuchFileException {
+    public FileInfoDto getFileInfo(@PathVariable String fileId) {
         log.info("api file info={}", fileId);
         Optional<FileMetadata> fileMetadataOptional = fileMetaRepository.findOneByStoredFileName(fileId);
 
