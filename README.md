@@ -47,10 +47,14 @@
 ![로그인 실패](https://github.com/bandall/Simple-File-Uploader/assets/32717522/6246df7b-2050-4bd5-885c-b3146d7d8d24) <br>
 로그인 실패 시 나오면 화면. BindingResult 사용 <br>
 
+---
+
 ### 메인 페이지
 ![메인화면](https://github.com/bandall/Simple-File-Uploader/assets/32717522/ba4cb66c-57cf-4a7a-8c07-5db88f6b075e) <br>
 로그인 성공 시 나오는 메인 페이지<br>
 파일 목록 조회와 파일 업로드 중 하나를 고를 수 있다. <br>
+
+---
 
 ### 업로드 페이지
 ![업로드 화면](https://github.com/bandall/Simple-File-Uploader/assets/32717522/f71dbf38-b657-4244-ad4e-d987bfa26633) <br>
@@ -63,6 +67,8 @@
 ![업로드 화면3](https://github.com/bandall/Simple-File-Uploader/assets/32717522/e2f1284c-4628-4a6b-bd69-f238a17b017e) <br>
 업로드 시 jQuery를 통해 파일 업로드 상황을 보여준다. <br>
 
+---
+
 ### 업로드 후 페이지
 ![업로드 성공](https://github.com/bandall/Simple-File-Uploader/assets/32717522/c98d112a-23f9-4042-8e9d-2f24799e63ed) <br>
 업로드에 성공하면 파일의 ID를 보여준다. 해당 파일 ID를 디스코드 음악 봇에 입력하면 로컬 음악을 재생할 수 있다. ex) `/local [your file id]` <br>
@@ -70,13 +76,19 @@
 ![업로드 후](https://github.com/bandall/Simple-File-Uploader/assets/32717522/1c83bb25-f314-47f9-9f50-ad380802d45c) <br>
 파일 목록에서도 업로드 파일 ID를 확인할 수 있다. 파일 삭제는 파일을 업로드한 계정만 가능하다. <br>
 
+---
+
 ### 검색 기능
 ![검색 기능](https://github.com/bandall/Simple-File-Uploader/assets/32717522/839f4050-ebb2-4f1e-acdc-94941bc21bdc) <br>
 원본 파일 이름 검색 기능을 통해 업로드한 파일을 조회할 수 있다. <br>
 
+---
+
 ### 오류 페이지
 ![오류 화면](https://github.com/bandall/Simple-File-Uploader/assets/32717522/f58f5193-dcab-4917-b571-22bc59296582) <br>
 오류가 발생할 경우 오류 페이지를 보여준다. 오류 페이지는 동적으로 오류 메시지를 담아 렌더링된다.
+
+---
 
 ## ❗ ISSUE ❗
 Node.js 프로젝트 진행 시에도 시놀로지 내부 Docker를 이용해서 배포했었는데, 그때는 응답 속도가 100ms 이하였다.
