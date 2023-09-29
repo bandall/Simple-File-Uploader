@@ -5,7 +5,7 @@
 <div align="center">
     Spring, Thymeleaf, MySQL을 이용한 음악 파일 업로드 서버
     <br>
-    디스코드 음악 봇과 연동하여 업로드한 음악 파일을 디스코드 봇을 통해 재생 가능 [디스코드 음악 봇](https://github.com/bandall/Discord-Music-Bot)
+    <a href="https://github.com/bandall/Discord-Music-Bot">디스코드 봇</a>과 연동하여 업로드한 음악 파일을 디스코드 봇을 통해 재생 가능
     <br>
     스프링 강의에서 배운 내용들을 익히기 위해 만들어 보았다.
 </div>
@@ -42,40 +42,40 @@
 ## 💻 주요 기능 💻
 
 ### 로그인 기능
-![로그인 화면](https://github.com/bandall/Simple-File-Uploader/assets/32717522/8d57fa3a-c2b7-423b-9c45-4b59e7d8ff0a)
+![로그인 화면](https://github.com/bandall/Simple-File-Uploader/assets/32717522/8d57fa3a-c2b7-423b-9c45-4b59e7d8ff0a) <br>
 스프링 시큐리티 Form 로그인 방식 사용. 계정 정보는 디스코드 봇을 통해 확인 가능 <br>
-![로그인 실패](https://github.com/bandall/Simple-File-Uploader/assets/32717522/6246df7b-2050-4bd5-885c-b3146d7d8d24)
+![로그인 실패](https://github.com/bandall/Simple-File-Uploader/assets/32717522/6246df7b-2050-4bd5-885c-b3146d7d8d24) <br>
 로그인 실패 시 나오면 화면. BindingResult 사용 <br>
 
 ### 메인 페이지
-![메인화면](https://github.com/bandall/Simple-File-Uploader/assets/32717522/ba4cb66c-57cf-4a7a-8c07-5db88f6b075e)
+![메인화면](https://github.com/bandall/Simple-File-Uploader/assets/32717522/ba4cb66c-57cf-4a7a-8c07-5db88f6b075e) <br>
 로그인 성공 시 나오는 메인 페이지<br>
 파일 목록 조회와 파일 업로드 중 하나를 고를 수 있다. <br>
 
 ### 업로드 페이지
-![업로드 화면](https://github.com/bandall/Simple-File-Uploader/assets/32717522/f71dbf38-b657-4244-ad4e-d987bfa26633)
+![업로드 화면](https://github.com/bandall/Simple-File-Uploader/assets/32717522/f71dbf38-b657-4244-ad4e-d987bfa26633) <br>
 파일을 하나 선택하여 업로드 할 수 있다. 업로드 할 수 있는 파일의 파일의 최대 크기는 300MB이다. <br>
 
-![업로드 화면2](https://github.com/bandall/Simple-File-Uploader/assets/32717522/a3641f0c-66e6-4182-85f6-f7919b4d88cf)
+![업로드 화면2](https://github.com/bandall/Simple-File-Uploader/assets/32717522/a3641f0c-66e6-4182-85f6-f7919b4d88cf) <br>
 
 <br>
 
-![업로드 화면3](https://github.com/bandall/Simple-File-Uploader/assets/32717522/e2f1284c-4628-4a6b-bd69-f238a17b017e)
+![업로드 화면3](https://github.com/bandall/Simple-File-Uploader/assets/32717522/e2f1284c-4628-4a6b-bd69-f238a17b017e) <br>
 업로드 시 jQuery를 통해 파일 업로드 상황을 보여준다. <br>
 
 ### 업로드 후 페이지
-![업로드 성공](https://github.com/bandall/Simple-File-Uploader/assets/32717522/c98d112a-23f9-4042-8e9d-2f24799e63ed)
+![업로드 성공](https://github.com/bandall/Simple-File-Uploader/assets/32717522/c98d112a-23f9-4042-8e9d-2f24799e63ed) <br>
 업로드에 성공하면 파일의 ID를 보여준다. 해당 파일 ID를 디스코드 음악 봇에 입력하면 로컬 음악을 재생할 수 있다. ex) `/local [your file id]` <br>
 
-![업로드 후](https://github.com/bandall/Simple-File-Uploader/assets/32717522/1c83bb25-f314-47f9-9f50-ad380802d45c)
+![업로드 후](https://github.com/bandall/Simple-File-Uploader/assets/32717522/1c83bb25-f314-47f9-9f50-ad380802d45c) <br>
 파일 목록에서도 업로드 파일 ID를 확인할 수 있다. 파일 삭제는 파일을 업로드한 계정만 가능하다. <br>
 
 ### 검색 기능
-![검색 기능](https://github.com/bandall/Simple-File-Uploader/assets/32717522/839f4050-ebb2-4f1e-acdc-94941bc21bdc)
+![검색 기능](https://github.com/bandall/Simple-File-Uploader/assets/32717522/839f4050-ebb2-4f1e-acdc-94941bc21bdc) <br>
 원본 파일 이름 검색 기능을 통해 업로드한 파일을 조회할 수 있다. <br>
 
 ### 오류 페이지
-![오류 화면](https://github.com/bandall/Simple-File-Uploader/assets/32717522/f58f5193-dcab-4917-b571-22bc59296582)
+![오류 화면](https://github.com/bandall/Simple-File-Uploader/assets/32717522/f58f5193-dcab-4917-b571-22bc59296582) <br>
 오류가 발생할 경우 오류 페이지를 보여준다. 오류 페이지는 동적으로 오류 메시지를 담아 렌더링된다.
 
 ## ❗ ISSUE ❗
