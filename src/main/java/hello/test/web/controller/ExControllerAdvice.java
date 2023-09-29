@@ -29,21 +29,21 @@ public class ExControllerAdvice {
     public String maxSizeError(Model model, Exception e) {
         log.info("파일 업로드 최대 크기 초과");
         model.addAttribute("errMsg", "ERROR : 파일 최대 크기는 300MB 입니다.");
-        return "/error/errorMessage";
+        return "error/errorMessage";
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MalformedURLException.class)
     public String wrongURLResourceError(Model model) {
         model.addAttribute("errMsg", "ERROR : 잘못된 URL 리소스 입니다.");
-        return "/error/errorMessage";
+        return "error/errorMessage";
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler({NoSuchFileException.class, FileNotFoundException.class})
     public String noSuchFileError(Model model) {
         model.addAttribute("errMsg", "ERROR : 파일이 존재하지 않습니다.");
-        return "/error/errorMessage";
+        return "error/errorMessage";
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -51,6 +51,6 @@ public class ExControllerAdvice {
     public String defaultError(Model model, Exception e) {
         model.addAttribute("errMsg", "ERROR : 서버에 오류가 발생했습니다.");
         log.error("서버에 오류 발생", e);
-        return "/error/errorMessage";
+        return "error/errorMessage";
     }
 }
